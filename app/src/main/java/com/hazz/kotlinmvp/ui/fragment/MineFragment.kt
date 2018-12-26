@@ -52,6 +52,7 @@ class MineFragment : BaseFragment(),View.OnClickListener {
         tv_mine_cache.setOnClickListener(this)
         tv_watch_history.setOnClickListener(this)
         tv_feedback.setOnClickListener(this)
+        tv_about.setOnClickListener(this)
 
 
     }
@@ -79,7 +80,10 @@ class MineFragment : BaseFragment(),View.OnClickListener {
             v?.id==R.id.tv_mine_attention -> showToast("我的缓存")
             v?.id==R.id.tv_watch_history -> startActivity(Intent(activity,WatchHistoryActivity::class.java))
             v?.id==R.id.tv_feedback -> showToast("意见反馈")
-
+            v?.id==R.id.tv_about ->{
+                val intent = Intent(activity, AboutActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 

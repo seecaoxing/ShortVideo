@@ -13,20 +13,20 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/color_title_bg">
 
-    <RelativeLayout
-        android:id="@+id/rel_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/rel_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/iv_about"
-            android:layout_width="wrap_content"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="15dp"
-            android:src="@mipmap/ic_about" />
+            <ImageView
+                android:id="@+id/iv_about"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="15dp"
+                android:src="@mipmap/ic_about" />
 
-    </RelativeLayout>
+        </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
 
@@ -60,9 +60,9 @@
         android:id="@+id/tv_view_homepage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:paddingTop="@dimen/padding_common_d"
         android:paddingBottom="@dimen/padding_common_d"
-        android:layout_gravity="center_horizontal"
         android:text="@string/view_homepage"
         android:textColor="@color/color_gray"
         android:textSize="@dimen/textSize_small" />
@@ -83,8 +83,8 @@
                 android:id="@+id/tv_collection"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:drawablePadding="7dp"
                 android:drawableStart="@mipmap/ic_action_collection"
+                android:drawablePadding="7dp"
                 android:gravity="center"
                 android:text="@string/collection" />
         </LinearLayout>
@@ -106,8 +106,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="15dp"
-                android:drawablePadding="7dp"
                 android:drawableStart="@mipmap/ic_action_comment"
+                android:drawablePadding="7dp"
                 android:gravity="center"
                 android:text="@string/comment" />
         </LinearLayout>
@@ -134,7 +134,8 @@
                 android:id="@+id/tv_mine_message"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:gravity="center|center_horizontal"
+                android:gravity="center_vertical"
+                android:padding="13dp"
                 android:text="@string/mine_message"
                 android:textSize="14sp" />
 
@@ -142,7 +143,8 @@
                 android:id="@+id/tv_mine_attention"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:gravity="center|center_horizontal"
+                android:gravity="center_vertical"
+                android:padding="13dp"
                 android:text="@string/mine_attention"
                 android:textSize="14sp" />
 
@@ -150,7 +152,8 @@
                 android:id="@+id/tv_mine_cache"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:gravity="center|center_horizontal"
+                android:gravity="center_vertical"
+                android:padding="13dp"
                 android:text="@string/mine_cache"
                 android:textSize="14sp" />
 
@@ -158,7 +161,8 @@
                 android:id="@+id/tv_watch_history"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:gravity="center|center_horizontal"
+                android:gravity="center_vertical"
+                android:padding="13dp"
                 android:text="@string/view_history"
                 android:textSize="14sp" />
 
@@ -166,8 +170,18 @@
                 android:id="@+id/tv_feedback"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:gravity="center|center_horizontal"
+                android:gravity="center_vertical"
+                android:padding="13dp"
                 android:text="@string/feedback"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_about"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:padding="13dp"
+                android:text="@string/about"
                 android:textSize="14sp" />
         </LinearLayout>
 
