@@ -1,7 +1,9 @@
 package com.hazz.kotlinmvp.ui.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Typeface
+import android.support.v4.content.ContextCompat.startActivity
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,6 +14,8 @@ import com.hazz.kotlinmvp.durationFormat
 import com.hazz.kotlinmvp.glide.GlideApp
 import com.hazz.kotlinmvp.glide.GlideRoundTransform
 import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
+import com.hazz.kotlinmvp.ui.activity.AboutActivity
+import com.hazz.kotlinmvp.ui.activity.ReviewActivity
 import com.hazz.kotlinmvp.view.recyclerview.MultipleType
 import com.hazz.kotlinmvp.view.recyclerview.ViewHolder
 import com.hazz.kotlinmvp.view.recyclerview.adapter.CommonAdapter
@@ -23,6 +27,7 @@ import com.hazz.kotlinmvp.view.recyclerview.adapter.CommonAdapter
 
 class VideoDetailAdapter(mContext: Context, data: ArrayList<HomeBean.Issue.Item>) :
         CommonAdapter<HomeBean.Issue.Item>(mContext, data, object : MultipleType<HomeBean.Issue.Item> {
+
             override fun getLayoutId(item: HomeBean.Issue.Item, position: Int): Int {
                 return when {
                     position == 0 ->
@@ -39,7 +44,7 @@ class VideoDetailAdapter(mContext: Context, data: ArrayList<HomeBean.Issue.Item>
             }
         }) {
 
-    private var textTypeface:Typeface?=null
+    private var textTypeface: Typeface? = null
 
     init {
         textTypeface = Typeface.createFromAsset(MyApplication.context.assets, "fonts/FZLanTingHeiS-L-GB-Regular.TTF")
@@ -87,7 +92,7 @@ class VideoDetailAdapter(mContext: Context, data: ArrayList<HomeBean.Issue.Item>
             data.type == "textCard" -> {
                 holder.setText(R.id.tv_text_card, data.data?.text!!)
                 //设置方正兰亭细黑简体
-                holder.getView<TextView>(R.id.tv_text_card).typeface =textTypeface
+                holder.getView<TextView>(R.id.tv_text_card).typeface = textTypeface
 
             }
             data.type == "videoSmallCard" -> {
@@ -95,14 +100,14 @@ class VideoDetailAdapter(mContext: Context, data: ArrayList<HomeBean.Issue.Item>
                     setText(R.id.tv_title, data.data?.title!!)
                     setText(R.id.tv_tag, "#${data.data.category} / ${durationFormat(data.data.duration)}")
                     setImagePath(R.id.iv_video_small_card, object : ViewHolder.HolderImageLoader(data.data.cover.detail) {
-                            override fun loadImage(iv: ImageView, path: String) {
-                                GlideApp.with(mContext)
-                                        .load(path)
-                                        .optionalTransform(GlideRoundTransform())
-                                        .placeholder(R.drawable.placeholder_banner)
-                                        .into(iv)
-                            }
-                        })
+                        override fun loadImage(iv: ImageView, path: String) {
+                            GlideApp.with(mContext)
+                                    .load(path)
+                                    .optionalTransform(GlideRoundTransform())
+                                    .placeholder(R.drawable.placeholder_banner)
+                                    .into(iv)
+                        }
+                    })
                 }
                 // 判断onItemClickRelatedVideo 并使用
                 holder.itemView.setOnClickListener { mOnItemClickRelatedVideo?.invoke(data) }
@@ -155,6 +160,8 @@ class VideoDetailAdapter(mContext: Context, data: ArrayList<HomeBean.Issue.Item>
             }
             getView<TextView>(R.id.tv_action_reply).setOnClickListener {
                 Toast.makeText(MyApplication.context, "评论", Toast.LENGTH_SHORT).show()
+                val intent = Intent(mContext, ReviewActivity::class.java)
+                mContext.startActivity(intent)
             }
         }
     }

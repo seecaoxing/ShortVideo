@@ -22,9 +22,9 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:largeHeap="true"
         android:theme="@style/AppTheme.NoActionBar">
 
 
@@ -70,9 +70,14 @@
             android:name=".ui.activity.AboutActivity"
             android:screenOrientation="portrait" />
         <!-- 观看记录 -->
-        <activity android:name=".ui.activity.WatchHistoryActivity"
-            android:screenOrientation="portrait"
-            />
+        <activity
+            android:name=".ui.activity.WatchHistoryActivity"
+            android:screenOrientation="portrait" />
+
+        <!--评论页-->
+        <activity
+            android:name=".ui.activity.ReviewActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 
