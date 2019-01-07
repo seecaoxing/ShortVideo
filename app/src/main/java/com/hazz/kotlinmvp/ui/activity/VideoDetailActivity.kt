@@ -3,12 +3,16 @@ package com.hazz.kotlinmvp.ui.activity
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.content.res.Configuration
+import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.support.v4.view.ViewCompat
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.transition.Transition
 import android.view.View
+import android.widget.HorizontalScrollView
 import android.widget.ImageView
+import android.widget.LinearLayout
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.hazz.kotlinmvp.Constants
@@ -88,7 +92,7 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View {
         initTransition()
         initVideoViewConfig()
 
-        mRecyclerView.layoutManager = LinearLayoutManager(this)
+        mRecyclerView.layoutManager = LinearLayoutManager(this,LinearLayout.VERTICAL,false)
         mRecyclerView.adapter = mAdapter
 
         //设置相关视频 Item 的点击事件
@@ -188,7 +192,6 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View {
     }
 
 
-
     /**
      * 初始化数据
      */
@@ -205,13 +208,13 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View {
      */
     private fun saveWatchVideoHistoryInfo(watchItem: HomeBean.Issue.Item) {
         //保存之前要先查询sp中是否有该value的记录，有则删除.这样保证搜索历史记录不会有重复条目
-        val historyMap = WatchHistoryUtils.getAll(Constants.FILE_WATCH_HISTORY_NAME,MyApplication.context) as Map<*, *>
+        val historyMap = WatchHistoryUtils.getAll(Constants.FILE_WATCH_HISTORY_NAME, MyApplication.context) as Map<*, *>
         for ((key, _) in historyMap) {
-            if (watchItem == WatchHistoryUtils.getObject(Constants.FILE_WATCH_HISTORY_NAME,MyApplication.context, key as String)) {
-                WatchHistoryUtils.remove(Constants.FILE_WATCH_HISTORY_NAME,MyApplication.context, key)
+            if (watchItem == WatchHistoryUtils.getObject(Constants.FILE_WATCH_HISTORY_NAME, MyApplication.context, key as String)) {
+                WatchHistoryUtils.remove(Constants.FILE_WATCH_HISTORY_NAME, MyApplication.context, key)
             }
         }
-        WatchHistoryUtils.putObject(Constants.FILE_WATCH_HISTORY_NAME,MyApplication.context, watchItem,"" + mFormat.format(Date()))
+        WatchHistoryUtils.putObject(Constants.FILE_WATCH_HISTORY_NAME, MyApplication.context, watchItem, "" + mFormat.format(Date()))
     }
 
 
@@ -240,7 +243,7 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View {
         itemData = itemInfo
         mAdapter.addData(itemInfo)
         // 请求相关的最新等视频
-        mPresenter.requestRelatedVideo(itemInfo.data?.id?:0)
+        mPresenter.requestRelatedVideo(itemInfo.data?.id ?: 0)
 
     }
 
