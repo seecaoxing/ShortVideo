@@ -26,4 +26,11 @@ class ReviewModel {
         return reviewList
     }
 
+
+    fun addReviewDta(mReviewData: ReviewBean): ReviewBean {
+
+        return mReviewData
+    }
+
+
 }

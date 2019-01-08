@@ -1,24 +1,23 @@
 package com.hazz.kotlinmvp.ui.activity
 
+import android.content.Context
+import android.graphics.Rect
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.text.TextUtils
+import android.view.View
+import android.view.Window
+import android.view.inputmethod.InputMethodManager
 import com.hazz.kotlinmvp.R
 import com.hazz.kotlinmvp.base.BaseActivity
 import com.hazz.kotlinmvp.mvp.contract.ReviewContract
 import com.hazz.kotlinmvp.mvp.model.bean.ReviewBean
-import com.hazz.kotlinmvp.mvp.presenter.HomePresenter
 import com.hazz.kotlinmvp.mvp.presenter.ReviewPresenter
-import com.hazz.kotlinmvp.ui.adapter.HomeAdapter
 import com.hazz.kotlinmvp.ui.adapter.ReviewAdapter
 import com.hazz.kotlinmvp.utils.StatusBarUtil
-import kotlinx.android.synthetic.main.activity_about.*
 import kotlinx.android.synthetic.main.activity_review.*
-import kotlinx.android.synthetic.main.activity_video_detail.*
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.layout_recyclerview.*
 
 class ReviewActivity : BaseActivity(), ReviewContract.View {
-
 
     private val mPresenter by lazy { ReviewPresenter() }
 
@@ -77,10 +76,51 @@ class ReviewActivity : BaseActivity(), ReviewContract.View {
         })
 
 
+        val decorView = this.getWindow().getDecorView()
+        val contentView = this.findViewById<View>(Window.ID_ANDROID_CONTENT)
+
+        decorView.viewTreeObserver.addOnGlobalLayoutListener {
+            val r = Rect()
+            decorView.getWindowVisibleDisplayFrame(r)
+
+            val height = decorView.getContext().getResources().getDisplayMetrics().heightPixels
+            val diff = height - r.bottom
+
+            if (diff != 0) {
+                if (contentView.getPaddingBottom() !== diff) {
+                    contentView.setPadding(0, 0, 0, diff)
+                }
+            } else {
+                if (contentView.getPaddingBottom() !== 0) {
+                    contentView.setPadding(0, 0, 0, 0)
+                }
+            }
+        }
+
+        sendReviewBtn.setOnClickListener {
+            var reviewText = editReview.text.toString()
+            if (!TextUtils.isEmpty(reviewText.trim())) {
+                var reviewBean = ReviewBean("111", "小李", reviewText, "20180902")
+                mPresenter.addReviewDta(reviewBean)
+            }
+        }
+
+
     }
 
     override fun start() {
+
     }
+
+    override fun addReview(mReview: ReviewBean) {
+        loadingMore = false
+        mReviewAdapter?.addItemData(mReview)
+        mReviewList.smoothScrollToPosition(0)
+        editReview.text.clear()
+
+
+    }
+
 
     override fun setReviewData(reviewList: ArrayList<ReviewBean>) {
         mReviewAdapter = this?.let { ReviewAdapter(it, reviewList) }
@@ -92,7 +132,7 @@ class ReviewActivity : BaseActivity(), ReviewContract.View {
 
     override fun setMoreData(moreItemList: ArrayList<ReviewBean>) {
         loadingMore = false
-        mReviewAdapter?.addItemData(moreItemList)
+        mReviewAdapter?.addMoreData(moreItemList)
 
     }
 

@@ -103,6 +103,7 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View {
         StatusBarUtil.setPaddingSmart(this, mVideoView)
 
         /***  下拉刷新  ***/
+        mRefreshLayout.setEnableRefresh(false)//设置不能刷新
         //内容跟随偏移
         mRefreshLayout.setEnableHeaderTranslationContent(true)
         mRefreshLayout.setOnRefreshListener {

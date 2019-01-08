@@ -18,12 +18,14 @@ class ReviewContract {
         /**
          * 设置加载更多的数据
          */
-        fun setMoreData(moreItemList:ArrayList<ReviewBean>)
+        fun setMoreData(moreItemList: ArrayList<ReviewBean>)
+
+        fun addReview(mReview: ReviewBean)
 
         /**
          * 显示错误信息
          */
-        fun showError(msg: String,errorCode:Int)
+        fun showError(msg: String, errorCode: Int)
 
 
     }
@@ -39,6 +41,8 @@ class ReviewContract {
          * 加载更多数据
          */
         fun loadMoreData()
+
+        fun addReviewDta(mReview: ReviewBean)
 
 
     }

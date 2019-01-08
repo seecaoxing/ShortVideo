@@ -5,6 +5,7 @@ import com.hazz.kotlinmvp.mvp.contract.HomeContract
 import com.hazz.kotlinmvp.mvp.contract.ReviewContract
 import com.hazz.kotlinmvp.mvp.model.HomeModel
 import com.hazz.kotlinmvp.mvp.model.ReviewModel
+import com.hazz.kotlinmvp.mvp.model.bean.ReviewBean
 
 class ReviewPresenter : BasePresenter<ReviewContract.View>(), ReviewContract.Presenter {
 
@@ -30,4 +31,10 @@ class ReviewPresenter : BasePresenter<ReviewContract.View>(), ReviewContract.Pre
         }
     }
 
+    override fun addReviewDta(mReview: ReviewBean) {
+        var mReviewData = reviewModel.addReviewDta(mReview)
+        mRootView?.apply {
+            addReview(mReviewData)
+        }
+    }
 }

@@ -32,9 +32,9 @@ class ReviewAdapter(context: Context, data: ArrayList<ReviewBean>)
 
     override fun bindData(holder: ViewHolder, data: ReviewBean, position: Int) {
 
-        holder.setText(R.id.mReviewAutorName,data.reviewAutorName)
-        holder.setText(R.id.mReviewContent,data.reviewContent)
-        holder.setText(R.id.mReviewTime,data.reviewTime)
+        holder.setText(R.id.mReviewAutorName, data.reviewAutorName)
+        holder.setText(R.id.mReviewContent, data.reviewContent)
+        holder.setText(R.id.mReviewTime, data.reviewTime)
 
     }
 
@@ -53,9 +53,14 @@ class ReviewAdapter(context: Context, data: ArrayList<ReviewBean>)
     /**
      * 添加更多数据
      */
-    fun addItemData(itemList: ArrayList<ReviewBean>) {
+    fun addMoreData(itemList: ArrayList<ReviewBean>) {
         this.mData.addAll(itemList)
         notifyDataSetChanged()
     }
 
+    fun addItemData(mReviewData: ReviewBean) {
+        this.mData.add(0, mReviewData)
+        notifyDataSetChanged()
+
+    }
 }
