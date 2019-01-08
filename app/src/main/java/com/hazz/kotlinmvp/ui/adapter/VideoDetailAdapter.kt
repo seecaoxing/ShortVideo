@@ -159,7 +159,6 @@ class VideoDetailAdapter(mContext: Context, data: ArrayList<HomeBean.Issue.Item>
                 Toast.makeText(MyApplication.context, "分享", Toast.LENGTH_SHORT).show()
             }
             getView<TextView>(R.id.tv_action_reply).setOnClickListener {
-                Toast.makeText(MyApplication.context, "评论", Toast.LENGTH_SHORT).show()
                 val intent = Intent(mContext, ReviewActivity::class.java)
                 mContext.startActivity(intent)
             }

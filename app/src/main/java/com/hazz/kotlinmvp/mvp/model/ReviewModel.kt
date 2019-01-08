@@ -8,7 +8,7 @@ class ReviewModel {
         var reviewList = ArrayList<ReviewBean>()
         var ints = 0 until num
         for (i: Int in ints) {
-            var mReviewBean = ReviewBean(i.toString(), "小明${i}", "我今天评论了${i},", "2019.01.${i}")
+            var mReviewBean = ReviewBean(i.toString(), "大老虎${i}", "我今天评论了${i},", "2019.01.${i}")
             reviewList.add(mReviewBean)
         }
         return reviewList
@@ -20,7 +20,7 @@ class ReviewModel {
         var reviewList = ArrayList<ReviewBean>()
         var ints = 0 until 10
         for (i: Int in ints) {
-            var mReviewBean = ReviewBean(i.toString(), "小明${i}", "我今天评论了${i},", "2019.01.${i}")
+            var mReviewBean = ReviewBean(i.toString(), "小狐狸${i}", "我今天评论了${i},", "2019.01.${i}")
             reviewList.add(mReviewBean)
         }
         return reviewList

@@ -1,6 +1,7 @@
 package com.hazz.kotlinmvp.ui.activity
 
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import com.hazz.kotlinmvp.R
 import com.hazz.kotlinmvp.base.BaseActivity
 import com.hazz.kotlinmvp.mvp.contract.ReviewContract
@@ -22,7 +23,8 @@ class ReviewActivity : BaseActivity(), ReviewContract.View {
     private val mPresenter by lazy { ReviewPresenter() }
 
 
-    private var num: Int = 1
+    private var num: Int = 20
+    private var loadingMore = false
 
     private var mReviewAdapter: ReviewAdapter? = null
 
@@ -42,13 +44,37 @@ class ReviewActivity : BaseActivity(), ReviewContract.View {
 
         mPresenter.attachView(this)
 
-        mPresenter.requestReviewData(20)
+        mPresenter.requestReviewData(num)
         mReviewToolbar.setNavigationOnClickListener { finish() }
 
         //状态栏透明和间距处理
         StatusBarUtil.darkMode(this)
         StatusBarUtil.setPaddingSmart(this, mReviewToolbar)
 
+        mReviewList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    val childCount = mReviewList.childCount
+                    val itemCount = mReviewList.layoutManager.itemCount
+                    val firstVisibleItem = (mReviewList.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+                    if (firstVisibleItem + childCount == itemCount) {
+                        if (!loadingMore) {
+                            loadingMore = true
+                            mPresenter.loadMoreData()
+                        }
+                    }
+                }
+
+            }
+
+            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+            }
+
+        })
 
 
     }
@@ -65,6 +91,7 @@ class ReviewActivity : BaseActivity(), ReviewContract.View {
     }
 
     override fun setMoreData(moreItemList: ArrayList<ReviewBean>) {
+        loadingMore = false
         mReviewAdapter?.addItemData(moreItemList)
 
     }

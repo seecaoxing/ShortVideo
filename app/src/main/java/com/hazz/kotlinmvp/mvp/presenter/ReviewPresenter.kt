@@ -26,7 +26,7 @@ class ReviewPresenter : BasePresenter<ReviewContract.View>(), ReviewContract.Pre
     override fun loadMoreData() {
         var revewList = reviewModel.loadMoreData()
         mRootView?.apply {
-            setReviewData(revewList)
+            setMoreData(revewList)
         }
     }
 
