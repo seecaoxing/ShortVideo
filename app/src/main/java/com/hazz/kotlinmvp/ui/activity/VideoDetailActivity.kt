@@ -92,7 +92,7 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View {
         initTransition()
         initVideoViewConfig()
 
-        mRecyclerView.layoutManager = LinearLayoutManager(this,LinearLayout.VERTICAL,false)
+        mRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
         mRecyclerView.adapter = mAdapter
 
         //设置相关视频 Item 的点击事件
