@@ -3,14 +3,11 @@ package com.hazz.kotlinmvp.ui.activity
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.content.res.Configuration
-import android.graphics.drawable.GradientDrawable
 import android.os.Build
 import android.support.v4.view.ViewCompat
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.transition.Transition
 import android.view.View
-import android.widget.HorizontalScrollView
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.bumptech.glide.load.DecodeFormat
