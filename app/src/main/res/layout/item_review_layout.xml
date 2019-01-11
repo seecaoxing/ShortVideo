@@ -9,20 +9,27 @@
         android:id="@+id/mReviewAutorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="一枝独秀哥" />
+        android:textStyle="bold"
+        android:text="一枝独秀哥"
+        android:textColor="#000000"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/mReviewContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="我今天来评论你的视屏索朗多吉逢山开
-        路发动机啊螺蛳粉索朗多吉发了发绿色的开发建设了" />
+        路发动机啊螺蛳粉索朗多吉发了发绿色的开发建设了"
+        android:textColor="#555555"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/mReviewTime"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="2018.01.05" />
+        android:gravity="right"
+        android:text="2018.01.05"
+        android:textSize="12sp" />
 
 
 </LinearLayout>
