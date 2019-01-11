@@ -15,6 +15,8 @@ import com.hazz.kotlinmvp.mvp.model.bean.ReviewBean
 import com.hazz.kotlinmvp.mvp.presenter.ReviewPresenter
 import com.hazz.kotlinmvp.ui.adapter.ReviewAdapter
 import com.hazz.kotlinmvp.utils.StatusBarUtil
+import com.utils.baseutils.DateTimeUtil
+import com.utils.baseutils.DateTimeUtil.LONG_DATE_TIME_FORMAT_SECOND
 import kotlinx.android.synthetic.main.activity_review.*
 
 class ReviewActivity : BaseActivity(), ReviewContract.View {
@@ -100,7 +102,7 @@ class ReviewActivity : BaseActivity(), ReviewContract.View {
         sendReviewBtn.setOnClickListener {
             var reviewText = editReview.text.toString()
             if (!TextUtils.isEmpty(reviewText.trim())) {
-                var reviewBean = ReviewBean("111", "小李", reviewText, "20180902")
+                var reviewBean = ReviewBean("111", "小李", reviewText, DateTimeUtil.getDateFormat(LONG_DATE_TIME_FORMAT_SECOND))
                 mPresenter.addReviewDta(reviewBean)
             }
         }
