@@ -119,16 +119,10 @@ class ReviewActivity : BaseActivity(), ReviewContract.View {
         mReviewAdapter?.addItemData(mReview)
         mReviewList.smoothScrollToPosition(0)
         editReview.text.clear()
-
-        closeSoftKeyBoard(sendReviewBtn)
+        closeKeyBord(editReview,this)
 
     }
 
-    fun closeSoftKeyBoard(view: View) {
-        //隐藏软键盘
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0) //强制隐藏键盘
-    }
 
     override fun setReviewData(reviewList: ArrayList<ReviewBean>) {
         mReviewAdapter = this?.let { ReviewAdapter(it, reviewList) }

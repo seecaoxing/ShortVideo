@@ -29,6 +29,7 @@ import com.hazz.kotlinmvp.view.VideoListener
 import com.orhanobut.logger.Logger
 import com.scwang.smartrefresh.header.MaterialHeader
 import com.shuyu.gsyvideoplayer.listener.LockClickListener
+import com.utils.baseutils.CommonUtil
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer
@@ -230,8 +231,8 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View {
     override fun setVideo(url: String) {
         Logger.d("playUrl:$url")
         mVideoView.setUp(url, false, "")
-        //开始自动播放
-        mVideoView.startPlayLogic()
+            //开始自动播放
+            mVideoView.startPlayLogic()
     }
 
     /**
