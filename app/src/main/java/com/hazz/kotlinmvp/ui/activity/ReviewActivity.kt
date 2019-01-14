@@ -8,6 +8,7 @@ import android.text.TextUtils
 import android.view.View
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
+import com.caoxing.kotlinbaseutils.UIUtils
 import com.hazz.kotlinmvp.R
 import com.hazz.kotlinmvp.base.BaseActivity
 import com.hazz.kotlinmvp.mvp.contract.ReviewContract
@@ -111,6 +112,7 @@ class ReviewActivity : BaseActivity(), ReviewContract.View {
     }
 
     override fun start() {
+        var height = UIUtils.dip2px(this,13.2)
 
     }
 

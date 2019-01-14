@@ -131,6 +131,7 @@ dependencies {
     //运行时权限
     implementation 'pub.devrel:easypermissions:1.2.0'
     implementation project(':baseutils')
+    implementation project(':kotlinbaseutils')
 
 
 }
