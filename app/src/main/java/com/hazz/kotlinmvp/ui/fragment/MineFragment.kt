@@ -54,6 +54,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         tv_watch_history.setOnClickListener(this)
         tv_feedback.setOnClickListener(this)
         tv_about.setOnClickListener(this)
+        tv_mine_zixun.setOnClickListener(this)
 
 
     }
