@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="@string/hot_title"
+                android:text="资讯"
                 android:textColor="@color/color_item_title"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -55,10 +55,10 @@
         app:errorView="@layout/layout_error_view"
         app:loadingView="@layout/layout_loading_view"
         app:noNetworkView="@layout/layout_network_view">
-    <android.support.v4.view.ViewPager
-        android:id="@+id/mViewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <android.support.v4.view.ViewPager
+            android:id="@+id/mViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </com.classic.common.MultipleStatusView>
 
 </LinearLayout>

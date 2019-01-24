@@ -78,7 +78,10 @@
         <activity
             android:name=".ui.activity.ReviewActivity"
             android:screenOrientation="portrait" />
-
+        <!--资讯页-->
+        <activity
+            android:name=".ui.activity.NewsActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

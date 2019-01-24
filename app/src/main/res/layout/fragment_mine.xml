@@ -128,7 +128,14 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="50dp"
             android:orientation="vertical">
-
+            <TextView
+                android:id="@+id/tv_mine_zixun"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:padding="13dp"
+                android:text="我的资讯"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv_mine_message"
